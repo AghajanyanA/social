@@ -4,7 +4,7 @@ import Profile from './../comps/Profile/Profile'
 import Messages from './../comps/Messages/Messages'
 import Music from "../comps/Music/Music";
 import News from '../comps/News/News'
-import { Settings } from "../comps/Settings/Settings";
+import Settings from "../comps/Settings/Settings";
 
 export const RenderRoutes = () => {
     return (
@@ -23,9 +23,6 @@ export const RenderRoutes = () => {
             </Route>
             <Route path='/settings'>
                 <Settings />
-            </Route>
-            <Route path='/'>
-                <Profile />
             </Route>
             
         </Switch>

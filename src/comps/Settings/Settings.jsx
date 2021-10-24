@@ -1,9 +1,10 @@
 import React from 'react'
 
-export const Settings = () => {
+const Settings = () => {
     return (
         <div>
             Do the settings bruh
         </div>
     )
 }
+export default Settings
