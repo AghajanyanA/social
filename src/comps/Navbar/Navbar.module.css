@@ -6,6 +6,10 @@
 .navbar a {
     text-decoration: none;
     color: whitesmoke;
-    font-weight: bold;
     font-size: large;
+}
+
+.navbar a.activeLink {
+    font-weight: bold;
+    color: red;
 }

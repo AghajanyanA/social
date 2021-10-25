@@ -1,0 +1,26 @@
+.postAvatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+.userName {
+    color: sandybrown;
+    padding: 5px 10px;
+    box-sizing: content-box;
+}
+
+.posts {
+    background-color: white;
+    padding: 10px;
+    margin: 5px 0;
+}
+
+.avaNname {
+    display: flex;
+    max-height: 25px;
+}
+.userMessage {
+    padding-left: 60px;
+    padding-top: 5px;
+}

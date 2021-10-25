@@ -3,7 +3,7 @@ import React from 'react'
 import Header from './comps/Header/Header';
 import Navbar from './comps/Navbar/Navbar';
 import { BrowserRouter as Router} from 'react-router-dom'
-import { RenderRoutes } from './routes/Routes';
+import RenderRoutes from './routes/Routes';
 
 function App() {
   return (

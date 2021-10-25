@@ -6,7 +6,7 @@ import Music from "../comps/Music/Music";
 import News from '../comps/News/News'
 import Settings from "../comps/Settings/Settings";
 
-export const RenderRoutes = () => {
+const RenderRoutes = () => {
     return (
         <Switch>
             <Route path='/profile'>
@@ -28,3 +28,5 @@ export const RenderRoutes = () => {
         </Switch>
     )
 }
+
+export default RenderRoutes
