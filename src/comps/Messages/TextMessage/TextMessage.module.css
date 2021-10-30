@@ -1,0 +1,11 @@
+.message {
+    padding: 5px ;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+a:hover {
+    text-decoration: underline;
+}

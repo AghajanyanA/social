@@ -2,25 +2,14 @@
     display: grid;
     grid-template-columns: 10fr 3fr;
 }
+
 .conversations {
     background-color: blue;
     padding: 10px;
-}
-
-.conversations .active {
-    color: whitesmoke;
-}
-
-.dialog {
-    padding: 5px;
 }
 
 .messages {
     background-color: red;
     padding: 10px;
 
-}
-
-.message {
-    padding: 5px ;
 }

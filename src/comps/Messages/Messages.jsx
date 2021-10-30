@@ -1,23 +1,25 @@
 import React from 'react'
 import c from './Messages.module.css'
+import TextMessage from './TextMessage/TextMessage'
+import Dialog from './Dialog/Dialog'
 
 const Messages = () => {
     return (
         <div className={c.wrapall}>
             <div className={c.messages}>
-                <div className={c.message}>Hey</div>
-                <div className={c.message}>Yo</div>
-                <div className={c.message}>How are you?</div>
-                <div className={c.message}>Good thanks im on drive today!</div>
-                <div className={c.message}>Haha did you read the book I suggested?</div>
+                <TextMessage msg='Hey' />
+                <TextMessage msg='Yo' />
+                <TextMessage msg='How are you?' />
+                <TextMessage msg='Good thanks im on drive today!' />
+                <TextMessage msg='Haha did you sniff the shit I suggested?' />
             </div>
             <div className={c.conversations}>
-                <div className={c.dialog + ' ' + c.active}>Andrew</div>
-                <div className={c.dialog}>Bobby</div>
-                <div className={c.dialog}>Sam</div>
-                <div className={c.dialog}>Jeffrey</div>
-                <div className={c.dialog}>Andromeda</div>
-                <div className={c.dialog}>Diego</div>
+                <Dialog id='1' user='Andrew'/>
+                <Dialog id='2' user='Bobby'/>
+                <Dialog id='3' user='Sam'/>
+                <Dialog id='4' user='Jeffrey'/>
+                <Dialog id='5' user='Andromeda'/>
+                <Dialog id='6' user='Diego'/>
             </div>
             
         </div>
