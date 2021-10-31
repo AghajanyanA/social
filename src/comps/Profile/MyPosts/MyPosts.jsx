@@ -8,7 +8,7 @@ export default function MyPosts() {
         <div>
             <div>Status bar
                 <div><textarea name="New Post" cols="100" rows="3.2" placeholder="Whats on your mind?"></textarea>
-                <Button>Default Button</Button>
+                <Button type="primary">Default Button</Button>
                 </div>
             </div>
             <Post name='James' message='Cool pic man'/>
