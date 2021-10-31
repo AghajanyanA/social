@@ -4,6 +4,12 @@ import { Button } from 'antd';
 import './MyPosts.module.css';
 
 export default function MyPosts() {
+    let postData = [
+        {id: 1, name: 'James', message:'Cool pic man'},
+        {id: 2, name: 'Anthony', message:'You look gr8'},
+        {id: 3, name: 'Jessica', message:'WHOS THAT BITCH BEHIND YOU'}
+    ]
+
     return (
         <div>
             <div>Status bar
@@ -11,9 +17,9 @@ export default function MyPosts() {
                 <Button type="primary">Default Button</Button>
                 </div>
             </div>
-            <Post name='James' message='Cool pic man'/>
-            <Post name='Anthony' message='You look gr8'/>
-            <Post name='Jessica' message='WHOS THAT BITCH BEHIND YOU'/>
+            <Post name={postData[0].name} message={postData[0].message}/>
+            <Post name={postData[1].name} message={postData[1].message}/>
+            <Post name={postData[2].name} message={postData[2].message}/>
         </div>
     )
 }

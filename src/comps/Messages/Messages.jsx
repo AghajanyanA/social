@@ -4,24 +4,35 @@ import TextMessage from './TextMessage/TextMessage'
 import Dialog from './Dialog/Dialog'
 
 const Messages = () => {
+
+    let textMessageData = [
+        {id:1, msg:'Hey'},
+        {id:2, msg:'Yo'},
+        {id:3, msg:'How are you?'},
+        {id:4, msg:'Good thanks im on drive today!'},
+        {id:5, msg:'Haha did you sniff the shit I suggested?'}
+    ]
+
+    let dialogData = [
+        {id:1, user:'Andrew'},
+        {id:2, user:'Bobby'},
+        {id:3, user:'Sam'},
+        {id:4, user:'Jeffrey'},
+        {id:5, user:'Andromeda'},
+        {id:6, user:'Diego'}
+    ]
+
+    let textMessageElements = textMessageData.map( m => <TextMessage msg={m.msg} />)
+    let dialogElements = dialogData.map(dUsers => <Dialog id={dUsers.id} user={dUsers.user} />)
+
     return (
         <div className={c.wrapall}>
             <div className={c.messages}>
-                <TextMessage msg='Hey' />
-                <TextMessage msg='Yo' />
-                <TextMessage msg='How are you?' />
-                <TextMessage msg='Good thanks im on drive today!' />
-                <TextMessage msg='Haha did you sniff the shit I suggested?' />
+                { textMessageElements }
             </div>
             <div className={c.conversations}>
-                <Dialog id='1' user='Andrew'/>
-                <Dialog id='2' user='Bobby'/>
-                <Dialog id='3' user='Sam'/>
-                <Dialog id='4' user='Jeffrey'/>
-                <Dialog id='5' user='Andromeda'/>
-                <Dialog id='6' user='Diego'/>
+                { dialogElements }
             </div>
-            
         </div>
     )
 }
