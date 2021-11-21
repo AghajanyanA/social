@@ -6,14 +6,14 @@ import Music from "../comps/Music/Music";
 import News from '../comps/News/News'
 import Settings from "../comps/Settings/Settings";
 
-const RenderRoutes = () => {
+const RenderRoutes = ({state, dispatch}) => {
     return (
         <Switch>
             <Route path='/profile'>
-                <Profile />
+                <Profile state={state} dispatch={dispatch} />
             </Route>
             <Route path='/messages'>
-                <Messages />
+                <Messages state={state.messagesPage} dispatch={dispatch}/>
             </Route>
             <Route path='/music'>
                 <Music />

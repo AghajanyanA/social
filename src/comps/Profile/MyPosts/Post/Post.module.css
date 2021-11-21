@@ -14,6 +14,7 @@
     background-color: white;
     padding: 10px;
     margin: 5px 0;
+    max-width: 82.2vw;
 }
 
 .avaNname {
@@ -23,4 +24,16 @@
 .userMessage {
     padding-left: 60px;
     padding-top: 5px;
+    overflow: hidden;
+    word-break: break-word;
+}
+
+.likeBtn {
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    margin: 3px -5px -3px -5px;
 }

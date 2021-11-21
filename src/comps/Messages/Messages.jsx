@@ -2,36 +2,44 @@ import React from 'react'
 import c from './Messages.module.css'
 import TextMessage from './TextMessage/TextMessage'
 import Dialog from './Dialog/Dialog'
+import { Button } from 'antd';
 
-const Messages = () => {
+const Messages = ({state, dispatch}) => {
 
-    let textMessageData = [
-        {id:1, msg:'Hey'},
-        {id:2, msg:'Yo'},
-        {id:3, msg:'How are you?'},
-        {id:4, msg:'Good thanks im on drive today!'},
-        {id:5, msg:'Haha did you sniff the shit I suggested?'}
-    ]
+    let dialogElements = state.dialogData.map(users => <Dialog state={users} />)
+    let textMessageElements = state.textMessageData.map( message => <TextMessage msg={message.msg} />)
 
-    let dialogData = [
-        {id:1, user:'Andrew'},
-        {id:2, user:'Bobby'},
-        {id:3, user:'Sam'},
-        {id:4, user:'Jeffrey'},
-        {id:5, user:'Andromeda'},
-        {id:6, user:'Diego'}
-    ]
+    let messagePost = React.createRef()
 
-    let textMessageElements = textMessageData.map( m => <TextMessage msg={m.msg} />)
-    let dialogElements = dialogData.map(dUsers => <Dialog id={dUsers.id} user={dUsers.user} />)
 
+    let handleOnChange = (e) => {
+        let text = e.target.value
+        dispatch({type: 'WRITE-PRIVATE-MESSAGE', message: text})
+    }
+    let handeSendPM = () => {
+        if(state.messageTextareaControl.trim() !== ''){
+        dispatch({type: 'SEND-PRIVATE-MESSAGE'})
+    } else {dispatch({type: 'CLEAR-PM-TEXTFIELD'})}
+}
+
+    
     return (
         <div className={c.wrapall}>
-            <div className={c.messages}>
-                { textMessageElements }
-            </div>
             <div className={c.conversations}>
                 { dialogElements }
+            </div>
+            <div className={c.messages}>
+                { textMessageElements }
+                <div className={c.textarea}>
+                    <textarea className={c.textarea} 
+                    value={state.messageTextareaControl} 
+                    ref={messagePost} 
+                    onChange={handleOnChange} 
+                    cols="7000" rows="3" 
+                    placeholder='Enter message' 
+                    spellCheck='true'></textarea>
+                    <Button className={c.button} onClick={handeSendPM}>Send</Button>
+                </div>
             </div>
         </div>
     )

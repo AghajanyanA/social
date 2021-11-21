@@ -1,6 +1,6 @@
 .wrapall {
     display: grid;
-    grid-template-columns: 10fr 3fr;
+    grid-template-columns: 3fr 10fr;
 }
 
 .conversations {
@@ -13,3 +13,14 @@
     padding: 10px;
 
 }
+
+.textarea{
+    position: relative;
+    margin-top: 20px;
+}
+
+.textarea:focus {
+    outline: none!important;
+    border:1px solid rgb(255, 255, 255);
+    box-shadow: 0 0 6px #ffffff;
+  }
