@@ -7,7 +7,8 @@
 "header header"
 "nav m";
     grid-template-rows: 1fr 10fr;
-    grid-template-columns: 2fr 10fr;
+ /* grid-template-columns: 2fr 10fr;  <= it was this before */
+    grid-template-columns: minmax(min-content, 2fr) minmax(max-content, 10fr);
     /* grid-column-gap: 10px; */
     height: 100vh;
 }
