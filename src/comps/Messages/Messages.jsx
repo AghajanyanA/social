@@ -9,8 +9,6 @@ const Messages = ({state, dispatch}) => {
     let dialogElements = state.dialogData.map(users => <Dialog state={users} />)
     let textMessageElements = state.textMessageData.map( message => <TextMessage msg={message.msg} />)
 
-    let messagePost = React.createRef()
-
 
     let handleOnChange = (e) => {
         let text = e.target.value
@@ -33,7 +31,6 @@ const Messages = ({state, dispatch}) => {
                 <div className={c.textarea}>
                     <textarea className={c.textarea} 
                     value={state.messageTextareaControl} 
-                    ref={messagePost} 
                     onChange={handleOnChange} 
                     cols="7000" rows="3" 
                     placeholder='Enter message' 

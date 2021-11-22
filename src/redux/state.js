@@ -109,8 +109,12 @@ let store = {
             this._state.messagesPage.messageTextareaControl = ''
             this._renderWebsite()
         }
-        else if(action.type === 'CLEAR-PM-TEXTFIELD') {
+        else if(action.type === 'CLEAR-PM-TEXTAREA') {
             this._state.messagesPage.messageTextareaControl = ''
+            this._renderWebsite()
+        }
+        else if(action.type === 'CLEAR-PROFILE-TEXTAREA') {
+            this._state.profilePage.textareaControl = ''
             this._renderWebsite()
         }
     },
@@ -120,8 +124,8 @@ let store = {
 
 window.store = store
 
-export let handlePostActionCreator = (userName, value, avaURL) => {
-    return {type: new_status_post(), userName: userName, value: value, likesCount: 0, avaURL: avaURL}
+export let handlePostActionCreator = (userName, avaURL) => {
+    return {type: new_status_post(), userName: userName, value: store.getState().profilePage.textareaControl, likesCount: 0, avaURL: avaURL}
 }
 export let updatePostTextActionCreator = (text) => {
     return {type: update_newpost_textarea(), text: text}
