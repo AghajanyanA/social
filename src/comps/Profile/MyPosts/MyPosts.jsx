@@ -2,7 +2,7 @@ import React from 'react';
 import Post from './Post/Post';
 import { Button } from 'antd';
 import './MyPosts.module.css';
-import { handlePostActionCreator, updatePostTextActionCreator } from '../../../redux/state';
+import { handlePostActionCreator, updatePostTextActionCreator } from '../../../redux/profileReducer';
 
 export default function MyPosts({ state, dispatch }) {
 

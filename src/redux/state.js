@@ -1,5 +1,5 @@
-const new_status_post = () => 'NEW-STATUS-POST';
-const update_newpost_textarea = () => 'UPDATE-NEWPOST-TEXT'
+import messagesReducer from "./messagesReducer"
+import profileReducer from "./profileReducer"
 
 
 let store = {
@@ -74,62 +74,16 @@ let store = {
     // },
 
     dispatch(action) {
-        if(action.type === new_status_post())  {
-            let new_post = {
-                id: this._state.profilePage.postData.length + 1,
-                name: action.userName,
-                message: action.value,
-                likesCount: action.likesCount,
-                avatarURL: action.avaURL
-            }
-            this._state.profilePage.postData.push(new_post)
-            this._state.profilePage.textareaControl = ''
-            this._renderWebsite()
-        }
-        else if(action.type === update_newpost_textarea()) {
-            this._state.profilePage.textareaControl = action.text
-            this._renderWebsite()
-        }
-        else if(action.type === 'ADD-LIKE-BY-BTN') {
-            console.log(action.likes, '// BEFORE')
-            this._state.profilePage.postData.likesCount = action.likes++
-            console.log(action.likes, '// AFTER')
-            this._renderWebsite()
-        }
-        else if(action.type === 'WRITE-PRIVATE-MESSAGE') {
-            this._state.messagesPage.messageTextareaControl = action.message
-            this._renderWebsite()
-        }
-        else if(action.type === 'SEND-PRIVATE-MESSAGE'){
-            let new_message = {
-                id: this._state.messagesPage.textMessageData.length + 1,
-                msg: this._state.messagesPage.messageTextareaControl
-            }
-            this._state.messagesPage.textMessageData.push(new_message)
-            this._state.messagesPage.messageTextareaControl = ''
-            this._renderWebsite()
-        }
-        else if(action.type === 'CLEAR-PM-TEXTAREA') {
-            this._state.messagesPage.messageTextareaControl = ''
-            this._renderWebsite()
-        }
-        else if(action.type === 'CLEAR-PROFILE-TEXTAREA') {
-            this._state.profilePage.textareaControl = ''
-            this._renderWebsite()
-        }
+        
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.messagesPage = messagesReducer(this._state.messagesPage, action)
+        this._renderWebsite()
     },
 
 }
 
 
 window.store = store
-
-export let handlePostActionCreator = (userName, avaURL) => {
-    return {type: new_status_post(), userName: userName, value: store.getState().profilePage.textareaControl, likesCount: 0, avaURL: avaURL}
-}
-export let updatePostTextActionCreator = (text) => {
-    return {type: update_newpost_textarea(), text: text}
-}
 
 export default store
 
