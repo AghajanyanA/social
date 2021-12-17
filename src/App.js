@@ -6,15 +6,14 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import RenderRoutes from './routes/Routes';
 import 'antd/dist/antd.css'
 
-function App({store}) {
-  
+function App() {
   return (
     <Router>
       <div className='main'>
-        <Header state={store.getState().header} />
+        <Header />
         <Navbar />
         <div className='content'>
-          <RenderRoutes state={store.getState()} dispatch={store.dispatch.bind(store)} />
+          <RenderRoutes />
         </div>
       </div>
     </Router>

@@ -4,22 +4,20 @@ import TextMessage from './TextMessage/TextMessage'
 import Dialog from './Dialog/Dialog'
 import { Button } from 'antd';
 
-const Messages = ({state, dispatch}) => {
-
+const Messages = ({state, handleOnChange, handleSendPM, handleElseSendPM}) => {
     let dialogElements = state.dialogData.map(users => <Dialog state={users} />)
-    let textMessageElements = state.textMessageData.map( message => <TextMessage msg={message.msg} />)
+    let textMessageElements = state.textMessageData.map(message => <TextMessage msg={message.msg} />)
 
 
-    let handleOnChange = (e) => {
+    let onChange = (e) => {
         let text = e.target.value
-        dispatch({type: 'WRITE-PRIVATE-MESSAGE', message: text})
+        handleOnChange(text)
     }
-    let handeSendPM = () => {
+    let onSendPM = () => {
         if(state.messageTextareaControl.trim() !== ''){
-        dispatch({type: 'SEND-PRIVATE-MESSAGE'})
-    } else {dispatch({type: 'CLEAR-PM-TEXTFIELD'})}
+            handleSendPM()
+    } else {handleElseSendPM()}
 }
-
     
     return (
         <div className={c.wrapall}>
@@ -31,11 +29,11 @@ const Messages = ({state, dispatch}) => {
                 <div className={c.textarea}>
                     <textarea className={c.textarea} 
                     value={state.messageTextareaControl} 
-                    onChange={handleOnChange} 
+                    onChange={onChange} 
                     cols="7000" rows="3" 
                     placeholder='Enter message' 
                     spellCheck='true'></textarea>
-                    <Button className={c.button} onClick={handeSendPM}>Send</Button>
+                    <Button className={c.button} onClick={onSendPM}>Send</Button>
                 </div>
             </div>
         </div>

@@ -1,0 +1,78 @@
+.names {
+    color: white;
+    margin: 5px;
+}
+
+.avatarURL {
+    width: 75px;
+    height: 75px;
+    border-radius: 10%;
+    margin: 5px
+}
+
+.usersblock {
+    background-color: #898999;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.userslocation {
+    margin: 5px;
+}
+
+.usersstatus {
+    margin: 5px;
+}
+
+.pinPIC {
+    width: 25px;
+    height: 35px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+.followBTNs {
+    margin-left: 5px;
+    
+}
+.followBTN {
+    background: olivedrab;
+    border: 1px solid rgb(62, 87, 13);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.followBTN:hover {
+    background: rgb(107, 162, 35);
+    border: 1px solid rgb(62, 107, 13);
+    cursor: pointer;
+}
+
+.unfollowBTN {
+    background: rgb(255, 69, 0);
+    border: 1px solid rgb(155, 41, 0);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.unfollowBTN:hover {
+    background: rgb(255, 101, 45);
+    border: 1px solid rgb(155, 61, 27);
+    cursor: pointer;
+}
+
+.pages {
+    cursor: pointer;
+    padding: 15px;
+    margin: 3px;
+    color: white;
+    background: rgb(98, 54, 255);
+    border-radius: 50%;
+    font-size: 28px;
+}
+
+.selectedPage {
+    font-weight: bold;
+    cursor: default;
+    background: rgb(164, 139, 255);
+    color: black
+}

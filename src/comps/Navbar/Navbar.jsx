@@ -10,6 +10,8 @@ export default function Navbar() {
             <div><NavLink to='/news' activeClassName={c.activeLink} className={c.links}>News</NavLink></div>
             <div><NavLink to='/music' activeClassName={c.activeLink} className={c.links}>Music</NavLink></div>
             <div><NavLink to='/settings' activeClassName={c.activeLink} className={c.links}>Settings</NavLink></div>
+            <div><NavLink to='/users' activeClassName={c.activeLink} className={c.links}>USERS YOOOOO</NavLink></div>
+            
         </div>
     
     )

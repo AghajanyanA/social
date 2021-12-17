@@ -1,11 +1,11 @@
 import React from 'react';
+import { likeBtnAction } from '../../../../redux/profileReducer';
 import c from './Post.module.css'
 
-export default function Post({ name, message, likesCount, avatarURL, dispatch}) {
+export default function Post({ id, name, message, likesCount, avatarURL, postCompContainer}) {
     let likeBtnHandler = () => {
-        // addLikeCountInProfile(likesCount)
-        let action = {type: 'ADD-LIKE-BY-BTN', likes: likesCount}
-        dispatch(action)
+        let action = likeBtnAction(likesCount, id)
+        postCompContainer(action)
     }
     return (
 

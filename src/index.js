@@ -2,23 +2,26 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import store from './redux/state'
+import store from './redux/redux-store'
 import reportWebVitals from './reportWebVitals'
+import { Provider } from 'react-redux';
 
 
 
 let renderWebsite = () => {
     ReactDOM.render(
-    <React.StrictMode>
-        <App store={store}/>
-    </React.StrictMode>,
-    document.getElementById('root')
+        <React.StrictMode>
+            <Provider store={store}>
+                <App />
+            </Provider>
+        </React.StrictMode>,
+        document.getElementById('root')
     );
 }
 
 
 store.subscribe(renderWebsite)
-renderWebsite(store.getState)
+renderWebsite(store.getState())
 
 
 

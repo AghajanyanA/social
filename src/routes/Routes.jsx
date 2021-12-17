@@ -1,19 +1,20 @@
 import React from "react";
 import { Switch, Route } from 'react-router-dom'
-import Profile from './../comps/Profile/Profile'
-import Messages from './../comps/Messages/Messages'
+import Profile from '../comps/Profile/Profile'
 import Music from "../comps/Music/Music";
 import News from '../comps/News/News'
 import Settings from "../comps/Settings/Settings";
+import MessagesContainer from "../comps/Messages/MessagesContainer";
+import UsersContainer from "../comps/Users/UsersContainer";
 
-const RenderRoutes = ({state, dispatch}) => {
+const RenderRoutes = () => {
     return (
         <Switch>
             <Route path='/profile'>
-                <Profile state={state} dispatch={dispatch} />
+                <Profile />
             </Route>
             <Route path='/messages'>
-                <Messages state={state.messagesPage} dispatch={dispatch}/>
+                <MessagesContainer />
             </Route>
             <Route path='/music'>
                 <Music />
@@ -24,7 +25,9 @@ const RenderRoutes = ({state, dispatch}) => {
             <Route path='/settings'>
                 <Settings />
             </Route>
-            
+            <Route path='/users'>
+                <UsersContainer />
+            </Route>
         </Switch>
     )
 }
