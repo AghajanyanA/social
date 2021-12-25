@@ -1,13 +1,16 @@
 const follow_toggle = 'follow_toggle'
 const load_users = 'load_users'
-const get_total_users_count = 'total_users_count'
 const change_current_page = 'change_current_page'
+const get_total_users_count = 'total_users_count'
+const toggle_is_loading = 'toggle_is_loading'
 
 let init_state = {
     users: [],
+    totalUsers: 50,
     pageSize: 10,
-    totalUsersCount: 0,
-    currentPage: 1
+    currentPage: 1,
+    isLoading: false,
+
 }
 
 let usersReducer = (state = init_state, action) => {
@@ -28,26 +31,30 @@ let usersReducer = (state = init_state, action) => {
                 ...state,
                 users: action.users
             }
+        case change_current_page:
+            return{
+                ...state,
+                currentPage: action.page
+            }
         case get_total_users_count:
             return{
                 ...state,
-                totalUsersCount: action.number
+                totalUsers: action.uNumber
             }
-        case change_current_page: 
+        case toggle_is_loading:
             return {
-                ...state, 
-                currentPage: action.newPage
+                ...state,
+                isLoading: action.isLoading
             }
-
         default:
             return state;
     }
 }
 export const followAC = id => {return{type: follow_toggle, id: id}}
 export const loadUsers = users => {return{type: load_users, users: users}}
-export const totalUsersAC = number => {return{type: get_total_users_count, number: number}}
-export const pageChangeAC = newPage => {return{type: change_current_page, newPage}}
-
+export const changePageAC = page => {return{type: change_current_page, page: page}}
+export const getTotalUsersAC = uNumber => {return{type: get_total_users_count, uNumber: uNumber}}
+export const ToggleLoaderAC = isLoading => {return {type: toggle_is_loading, isLoading}}
 
 
 export default usersReducer
