@@ -7,21 +7,14 @@ import reportWebVitals from './reportWebVitals'
 import { Provider } from 'react-redux';
 
 
-
-let renderWebsite = () => {
-    ReactDOM.render(
-        <React.StrictMode>
-            <Provider store={store}>
-                <App />
-            </Provider>
-        </React.StrictMode>,
-        document.getElementById('root')
-    );
-}
-
-
-store.subscribe(renderWebsite)
-renderWebsite(store.getState())
+ReactDOM.render(
+    <React.StrictMode>
+        <Provider store={store}>
+            <App />
+        </Provider>
+    </React.StrictMode>,
+    document.getElementById('root')
+);
 
 
 
