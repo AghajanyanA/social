@@ -14,7 +14,7 @@ const Users = (props) => {
     }
     return (
 
-        <div>
+        <div className={c.wrap}>
             {props.users.map(users => <div className={c.usersblock} key={users.id}>
                 <img className={c.avatarURL} src={ users.photos.small != null ? users.photos.small : 'https://www.svgrepo.com/show/381153/protection-personal-computer-privacy-firewall-security.svg' } alt="sorry" />
                 <div className={c.names}>

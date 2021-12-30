@@ -31,19 +31,17 @@ class Users extends React.Component {
     }
 
 
-
     render() {
         return <>
-            {this.props.isLoading ? <div className={c.preloader}><Preloader /></div> : <UsersFin
+            { this.props.isLoading && <div className={c.preloader}><Preloader /></div> }
+             <UsersFin
                 totalUsers={this.props.totalUsers}
                 pageSize={this.props.pageSize}
                 currentPage={this.props.currentPage}
                 handlePageChange={this.handlePageChange}
                 users={this.props.users}
                 followToggle={this.props.followToggle}
-            />
-            }
-            
+            />    
         </>
     }
 }
