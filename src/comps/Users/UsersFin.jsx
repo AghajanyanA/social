@@ -1,9 +1,11 @@
 import React, { useState, useMemo } from "react";
 import c from './users.module.css'
 import { ImArrowLeft, ImArrowRight } from 'react-icons/im'
+import { useHistory } from "react-router-dom";
+import { followAPI } from "../../api-calls/APIcalls";
 
 
-let UsersFin = (props) => {
+const UsersFin = (props) => {
     const unloaded = 'https://www.svgrepo.com/show/381153/protection-personal-computer-privacy-firewall-security.svg'
     const [limit, setLimit] = useState({
         start: 0,
@@ -25,20 +27,20 @@ let UsersFin = (props) => {
     const handleClickOnLeftArrow = () => {
         props.handlePageChange(props.currentPage - 1)
         setLimit({
-            start: limit.start - 1,
-            end: limit.end - 1
+            start: limit.start - 2,
+            end: limit.end - 2
         })
     }
 
     const handleClickOnRightArrow = () => {
         props.handlePageChange(props.currentPage + 1)
         setLimit({
-            start: limit.start + 1,
-            end: limit.end + 1
+            start: limit.start + 2,
+            end: limit.end + 2
         })
     }
     const pageNumberClick = (page) => {
-            setLimit({
+        setLimit({
             start: page - 2,
             end: page + 2
         })
@@ -46,16 +48,47 @@ let UsersFin = (props) => {
     }
 
     const [active, setActive] = useState(false)
+    const history = useHistory()
+    const handleRedirect = (e) => {
+        const id = e.currentTarget.dataset.userid
+        if (!id) {
+            return
+        }
+
+        history.push(`/profile/${id}`)
+
+    }
+
+
+    const unfollowClickHandler = userid => {
+        props.followIsPendingToggler(true, userid)
+        followAPI.unfollowUserApiCall(userid)
+        .then(
+            res => {
+                if (res.data.resultCode === 0) {
+                    props.followToggle(userid)
+                    props.followIsPendingToggler(false, userid)
+                }
+            }
+        ).catch(err => console.log(err));
+    }
+
+    const followClickHandler = userid => {
+        props.followIsPendingToggler(true, userid)
+        followAPI.followUserApiCall(userid).then(
+            res => {
+                if (res.data.resultCode === 0) {
+                    props.followToggle(userid)
+                    props.followIsPendingToggler(false, userid)
+                }
+            }
+        ).catch(err => console.log(err));
+    }
 
 
 
-    // const pageItem = (page) => {
-    //     return <span
-    //         className={props.currentPage === page ? c.selectedPage : c.pages}
-    //         onClick={ pageNumberClick(page) } >
-    //         {page}
-    //     </span>
-    // }
+
+
 
     return (
         <div>
@@ -63,20 +96,22 @@ let UsersFin = (props) => {
                 {limit.start !== 0 && <ImArrowLeft onClick={handleClickOnLeftArrow} />}
 
                 {/* before dots */}
-                <span> 
-                    {active === false && props.currentPage !== pages.length - 3 ? 
-                    pages.filter(item => item <= limit.end && item >= limit.start)
-                    .map(page => <span
-                        className={ props.currentPage === page ? c.selectedPage : c.pages }
-                        onClick={() => pageNumberClick(page) } >
-                        {page}
-                    </span>) : 
-                    pages.filter(item => item <= limit.end && item >= limit.start)
-                    .map(page => <span
-                        className={props.currentPage === page ? c.selectedPage : c.pages}
-                        onClick={() => {setActive(false); pageNumberClick(page) }} >
-                        {page}
-                    </span>)
+                <span>
+                    {active === false && props.currentPage !== pages.length - 3 ?
+                        pages.filter(item => item <= limit.end && item >= limit.start)
+                            .map(page => <span
+                                onClick={() => pageNumberClick(page)}
+                                className={props.currentPage === page ? c.selectedPage : c.pages}
+                                key={page} >
+                                {page}
+                            </span>) :
+                        pages.filter(item => item <= limit.end && item >= limit.start)
+                            .map(page => <span
+                                className={props.currentPage === page ? c.selectedPage : c.pages}
+                                onClick={() => { setActive(false); pageNumberClick(page) }}
+                                key={page}>
+                                {page}
+                            </span>)
                     }
                 </span>
 
@@ -85,7 +120,8 @@ let UsersFin = (props) => {
                 {/* after dots */}
                 {pages.filter(item => item > pages.length - 3).map(page => <span
                     className={props.currentPage === page ? c.selectedPage : c.pages}
-                    onClick={() => {setActive(true); props.currentPage !== page && props.handlePageChange(page) }} >
+                    onClick={() => { setActive(true); props.currentPage !== page && props.handlePageChange(page) }}
+                    key={page} >
                     {page}
                 </span>)}
                 {props.currentPage !== pages.length && <ImArrowRight onClick={handleClickOnRightArrow} />}
@@ -94,23 +130,30 @@ let UsersFin = (props) => {
 
             <div>
                 {props.users.map(users => <div className={c.usersblock} key={users.id}>
-                    <img className={c.avatarURL} src={users.photos.small != null ? users.photos.small : unloaded} alt="sorry" />
-                    <div className={c.names}>
-                        {users.name}
-                    </div>
+                    <div className={c.insideBlockWrapperAll} >
+                        <div style={{
+                            display: 'flex',
+                            justifyContent: 'center'
+                        }}>
+                            <div className={c.navlink} >
+                                <img data-userId={users.id} onClick={handleRedirect} className={c.avatarURL} src={users.photos.small != null ? users.photos.small : unloaded} alt="sorry" />
+                                <span className={c.names} data-userId={users.id} onClick={handleRedirect} >
+                                    {users.name}
+                                </span>
+                            </div>
 
-                    <div className={c.followBTNs}>
-                        {users.following ?
-                            <button className={c.unfollowBTN} onClick={() => props.followToggle(users.id)} >Unfollow</button> :
-                            <button className={c.followBTN} onClick={() => props.followToggle(users.id)} >Follow</button>}
-                    </div>
-                    <div className={c.userslocation}>
-                        <img className={c.pinPIC} src='https://www.freeiconspng.com/uploads/red-location-icon-map-png-4.png' alt='' />{'{users.location.city}'}, {'{users.location.country}'}
-                    </div>
-                    <div className={c.usersstatus}>
-                        {users.status != null ? users.status : 'No status'} <br />UID: {users.id}
-                    </div>
+                        </div>
+                        
+                        {users.followed ? // UNFOLLOW BUTTON
+                            <button disabled={props.followPending.some(id => id === users.id)} className={c.unfollowBTN} onClick={() => unfollowClickHandler(users.id) }>Unfollow</button> :
 
+                                          // FOLLOW   BUTTON
+                            <button disabled={props.followPending.some(id => id === users.id)} className={c.followBTN} onClick={() => followClickHandler(users.id)} >Follow</button> }
+
+                        <div className={c.usersstatus}>
+                            {users.status != null ? users.status : 'No status'} <br />UID: {users.id}
+                        </div>
+                    </div>
                 </div>)
                 }
             </div>
