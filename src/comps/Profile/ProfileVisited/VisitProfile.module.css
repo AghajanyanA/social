@@ -1,0 +1,41 @@
+.profileWrap {
+    padding-left: 10%;
+}
+
+.avaInfo {
+    display: flex;
+    position: relative;
+}
+.avaInfo img {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    box-shadow: 0 0 6px 3px rgb(63, 76, 131);
+    background: rgb(63, 76, 131);
+}
+.avaInfo .userName {
+
+    margin: 70px 0 0 10px;
+    max-height: 60px;
+    word-break: break-word;
+    padding: 4px;
+    font-size: 28px;
+    text-shadow: cornflowerblue 0 0 10px;
+}
+
+
+.status {
+    margin: 50px 0 0 30px;
+    box-sizing: content-box;
+    max-width: 50%;
+    overflow: auto;
+    overflow-x: hidden;
+    word-break: break-word;
+    background-color: rgb(51, 110, 43);
+}
+.status > p {
+    padding: 4px;
+    width: 25.5vw;
+    background-color: rgba(255, 0, 0, 0.999);
+    font-size: 12px;
+}
