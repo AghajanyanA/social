@@ -1,0 +1,52 @@
+.settings {
+    background-color: #4949d3;
+    padding: 5px
+}
+
+.colorTheme {
+    background-color: #6565d4;
+    margin: 10px;
+    padding: 5px;
+
+}
+
+.themes {
+    display: flex;
+    margin:10px;
+
+}
+
+.theme1 {
+    margin: 7px;
+    height: 30px;
+    width: 30px;
+    background: green;
+    border-radius: 100%;
+    border: black 2px solid;
+    /* box-shadow: 0 0 5px 5px #ff00b3 inset; */
+    box-sizing: content-box;
+}
+
+.theme1:hover {
+    background: rgb(38, 211, 38);
+    border: rgb(158, 245, 147) 2px solid;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px #151574;
+}
+
+.theme2 {
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    background: blue;
+    margin: 7px;
+    border: black 2px solid;
+    box-sizing: content-box;
+}
+
+.theme2:hover {
+    background: rgb(64, 77, 255);
+    border: rgb(159, 159, 253) 2px solid;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px #151574;
+}
