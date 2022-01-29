@@ -1,39 +1,26 @@
 import { connect } from "react-redux";
-import { changePageAC, followAC, getTotalUsersAC, loadUsers, ToggleLoaderAC } from "../../redux/usersReducer";
-import axios from "axios";
+import { followAC, folllowIsPending } from "../../redux/usersReducer";
 import UsersFin from "./UsersFin";
 import React from "react";
 import Preloader from "../assets/loading-gif/Preloader"
 import c from './users.module.css'
+import { loadUsersThunk, changePageThunk } from "../../redux/actions/users";
 
 
 class Users extends React.Component {
     componentDidMount() {
-        this.props.toggleLoading(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`)
-            .then(res => {
-                this.props.toggleLoading(false)
-                this.props.loadusers(res.data.items)
-                this.props.totalUsersD(res.data.totalCount)
-            }
-            );
+        this.props.loadUsers(this.props.pageSize, this.props.currentPage)
     }
 
     handlePageChange = (pageNumber) => {
-        this.props.toggleLoading(true)
-        this.props.handlePageChange(pageNumber)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${pageNumber}`)
-            .then(res => {
-                this.props.toggleLoading(false)
-                this.props.loadusers(res.data.items)
-            }
-            )
+        this.props.changeThePage(this.props.pageSize, pageNumber)
     }
+
 
 
     render() {
         return <>
-            { this.props.isLoading && <div className={c.preloader}><Preloader /></div> }
+            { this.props.isLoading && <div className={c.preloader}> <Preloader /> </div> }
              <UsersFin
                 totalUsers={this.props.totalUsers}
                 pageSize={this.props.pageSize}
@@ -41,39 +28,39 @@ class Users extends React.Component {
                 handlePageChange={this.handlePageChange}
                 users={this.props.users}
                 followToggle={this.props.followToggle}
+                followPending={this.props.followPending}
+                followIsPendingToggler={this.props.followIsPendingToggler}
             />    
         </>
     }
 }
 
-let mapStateToProps = state => {
+const mapStateToProps = state => {
     return {
         users: state.usersPage.users,
         pageSize: state.usersPage.pageSize,
         totalUsers: state.usersPage.totalUsers,
         currentPage: state.usersPage.currentPage,
         isLoading: state.usersPage.isLoading,
-
+        followPending: state.usersPage.followPending,
+        
     }
 }
 
 
-let mapDispatchToProps = dispatch => {
+const mapDispatchToProps = dispatch => {
     return {
         followToggle: id => {
             dispatch(followAC(id))
         },
-        loadusers: users => {
-            dispatch(loadUsers(users))
+        followIsPendingToggler: (isPending, userID) => {
+            dispatch(folllowIsPending(isPending, userID))
         },
-        handlePageChange: page => {
-            dispatch(changePageAC(page))
+        loadUsers: (pageSize, currentPage) => {
+            dispatch(loadUsersThunk(pageSize, currentPage))
         },
-        totalUsersD: number => {
-            dispatch(getTotalUsersAC(number))
-        },
-        toggleLoading: isLing => {
-            dispatch(ToggleLoaderAC(isLing))
+        changeThePage: (pageSize, pageNumber) => {
+            dispatch(changePageThunk(pageSize, pageNumber))
         }
     }
 
