@@ -3,12 +3,11 @@ import c from './users.module.css'
 import axios from "axios";
 
 const Users = (props) => {
-    let pinURL = 'https://www.freeiconspng.com/uploads/red-location-icon-map-png-4.png'
-
 
     if (props.users.length === 0) {
         axios.get('https://social-network.samuraijs.com/api/1.0/users')
             .then(response => props.loadusers(response.data.items))
+            .catch(err => console.log(err))
 
         
     }
@@ -25,9 +24,6 @@ const Users = (props) => {
                     {users.following ?
                         <button className={c.unfollowBTN} onClick={() => props.followToggle(users.id)} >Unfollow</button> :
                         <button className={c.followBTN} onClick={() => props.followToggle(users.id)}  >Follow</button>}
-                </div>
-                <div className={c.userslocation}>
-                    <img className={c.pinPIC} src={pinURL} />{'users.location.city'}, {'users.location.country'}
                 </div>
                 <div className={c.usersstatus}>
                     { users.status != null ? users.status : 'No status' }, UID: {users.id}
