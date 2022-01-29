@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { handlePostActionCreator, resetProfileTextareaAction, updatePostTextActionCreator } from '../../../redux/profileReducer';
 import MyPosts from './MyPosts';
 
-let mapStateToProps = state => {
+const mapStateToProps = state => {
     return {
         state: state.profilePage,
         userName: state.header.userName,
@@ -11,7 +11,7 @@ let mapStateToProps = state => {
     }
 }
 
-let mapDispatchToProps = dispatch => {
+const mapDispatchToProps = dispatch => {
     return {
         textareaChange: text => {
             dispatch(updatePostTextActionCreator(text))
@@ -27,6 +27,6 @@ let mapDispatchToProps = dispatch => {
     }
 }
 
-let MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts)
 
-export default MyPostsContainer
+
+export default connect(mapStateToProps, mapDispatchToProps)(MyPosts)

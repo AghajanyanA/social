@@ -3,8 +3,8 @@ import { likeBtnAction } from '../../../../redux/profileReducer';
 import c from './Post.module.css'
 
 export default function Post({ id, name, message, likesCount, avatarURL, postCompContainer}) {
-    let likeBtnHandler = () => {
-        let action = likeBtnAction(likesCount, id)
+    const likeBtnHandler = () => {
+        const action = likeBtnAction(likesCount, id)
         postCompContainer(action)
     }
     return (

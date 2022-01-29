@@ -3,7 +3,7 @@ const update_newpost_textarea = 'UPDATE-NEWPOST-TEXT'
 const clear_profile_textarea = 'CLEAR-PROFILE-TEXTAREA'
 const add_like_by_btn = 'ADD-LIKE-BY-BTN'
 
-let init_state = {
+const init_state = {
     avatarURL: 'https://st2.depositphotos.com/1104517/11967/v/950/depositphotos_119675554-stock-illustration-male-avatar-profile-picture-vector.jpg',
     postData: [
         { id: 1, name: 'James', message: 'Cool pic man duuude', likesCount: 22, avatarURL: 'https://www.svgrepo.com/show/106358/avatar.svg' },
@@ -14,11 +14,11 @@ let init_state = {
 }
 
 
-let profileReducer = (state = init_state, action) => {
+const profileReducer = (state = init_state, action) => {
 
     switch (action.type) {
         case new_status_post:
-            let new_post = {
+            const new_post = {
                 id: state.postData.length + 1,
                 name: action.userName,
                 message: state.textareaControl,
@@ -51,16 +51,16 @@ let profileReducer = (state = init_state, action) => {
     }
 }
 
-export let handlePostActionCreator = (userName, avaURL) => {
+export const handlePostActionCreator = (userName, avaURL) => {
     return { type: new_status_post, userName: userName, avaURL: avaURL }
 }
-export let updatePostTextActionCreator = (text) => {
+export const updatePostTextActionCreator = (text) => {
     return { type: update_newpost_textarea, text: text }
 }
-export let resetProfileTextareaAction = () => {
+export const resetProfileTextareaAction = () => {
     return { type: clear_profile_textarea }
 }
-export let likeBtnAction = (likesCount, id) => {
+export const likeBtnAction = (likesCount, id) => {
     return { type: add_like_by_btn, likesCount: likesCount, id: id }
 }
 

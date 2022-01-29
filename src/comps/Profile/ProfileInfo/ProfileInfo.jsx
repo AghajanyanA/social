@@ -15,7 +15,7 @@ function Profile({avatarURL}) {
             }
             
 
-let mapStateToProps = state => {
+const mapStateToProps = state => {
     return {
     avatarURL: state.profilePage.avatarURL
     }

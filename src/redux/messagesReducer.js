@@ -3,7 +3,7 @@ const handle_send_pm = 'SEND-PRIVATE-MESSAGE'
 const clear_pm_textarea = 'CLEAR-PM-TEXTAREA'
 
 
-let init_state = {
+const init_state = {
     textMessageData: [
         { id: 1, msg: 'Hey' },
         { id: 2, msg: 'Yo' },
@@ -22,7 +22,7 @@ let init_state = {
     messageTextareaControl: ''
 }
 
-let messagesReducer = (state = init_state, action) => {
+const messagesReducer = (state = init_state, action) => {
     switch (action.type) {
         case write_private_message:
             return {
@@ -30,7 +30,7 @@ let messagesReducer = (state = init_state, action) => {
                 messageTextareaControl: action.message
             }
         case handle_send_pm:
-            let new_message = {
+            const new_message = {
                 id: state.textMessageData.length + 1,
                 msg: state.messageTextareaControl
             }
@@ -50,8 +50,8 @@ let messagesReducer = (state = init_state, action) => {
     }
 }
 
-export let msgTextareaActionCreator = text => {return {type: write_private_message, message: text}}
-export let sendPMActionCreator = () => {return {type: handle_send_pm}}
-export let clearTextareaActionCreator = () => {return {type: clear_pm_textarea}}
+export const msgTextareaActionCreator = text => {return {type: write_private_message, message: text}}
+export const sendPMActionCreator = () => {return {type: handle_send_pm}}
+export const clearTextareaActionCreator = () => {return {type: clear_pm_textarea}}
 
 export default messagesReducer

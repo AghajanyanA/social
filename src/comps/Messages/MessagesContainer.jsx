@@ -3,13 +3,13 @@ import { clearTextareaActionCreator, msgTextareaActionCreator, sendPMActionCreat
 import Messages from './Messages';
 
 
-let mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
     return {
         state: state.messagePage
 }
 }
 
-let mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
     return {
         handleOnChange: (text) => {
             dispatch(msgTextareaActionCreator(text))
@@ -23,6 +23,6 @@ let mapDispatchToProps = (dispatch) => {
     }
 }
 
-let MessagesContainer = connect(mapStateToProps, mapDispatchToProps)(Messages)
+const MessagesContainer = connect(mapStateToProps, mapDispatchToProps)(Messages)
 
 export default MessagesContainer

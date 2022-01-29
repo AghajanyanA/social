@@ -5,15 +5,15 @@ import Dialog from './Dialog/Dialog'
 import { Button } from 'antd';
 
 const Messages = ({state, handleOnChange, handleSendPM, handleElseSendPM}) => {
-    let dialogElements = state.dialogData.map(users => <Dialog state={users} />)
-    let textMessageElements = state.textMessageData.map(message => <TextMessage msg={message.msg} />)
+    const dialogElements = state.dialogData.map(users => <Dialog key={users.id} state={users} />)
+    const textMessageElements = state.textMessageData.map(message => <TextMessage key={message.id} msg={message.msg} />)
 
 
-    let onChange = (e) => {
-        let text = e.target.value
+    const onChange = (e) => {
+        const text = e.target.value
         handleOnChange(text)
     }
-    let onSendPM = () => {
+    const onSendPM = () => {
         if(state.messageTextareaControl.trim() !== ''){
             handleSendPM()
     } else {handleElseSendPM()}

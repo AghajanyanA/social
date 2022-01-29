@@ -4,16 +4,13 @@ import { Button } from 'antd';
 import './MyPosts.module.css';
 
 export default function MyPosts({ state, textareaChange, handlePost, postCompContainer, userName, currentTextarea, avaURL }) {
-
-    let postElements = state.postData.map(el => <Post id={el.id} name={el.name} message={el.message} likesCount={el.likesCount} avatarURL={el.avatarURL} postCompContainer={postCompContainer} />)
-
-    let onTextareaChange = (e) => {
-        let text = e.target.value
+    const onTextareaChange = (e) => {
+        const text = e.target.value
         textareaChange(text)
     }
 
-    let onHandlePost = () => {
-        handlePost({userName, currentTextarea, avaURL})
+    const onHandlePost = () => {
+        handlePost({ userName, currentTextarea, avaURL })
     }
 
     return (
@@ -23,7 +20,7 @@ export default function MyPosts({ state, textareaChange, handlePost, postCompCon
                     <Button type="primary" onClick={onHandlePost}>Send</Button>
                 </div>
             </div>
-            {postElements}
+            {state.postData.map(el => <Post key={el.id} id={el.id} name={el.name} message={el.message} likesCount={el.likesCount} avatarURL={el.avatarURL} postCompContainer={postCompContainer} />)}
         </div>
     )
 }
