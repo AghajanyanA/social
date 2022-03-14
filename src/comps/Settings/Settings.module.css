@@ -16,36 +16,36 @@
 
 }
 
-.theme1 {
+.whiteTheme {
     margin: 7px;
     height: 30px;
     width: 30px;
-    background: green;
+    background: linear-gradient(90deg, rgb(161, 161, 161) 50%, white 50%);
     border-radius: 100%;
     border: black 2px solid;
     /* box-shadow: 0 0 5px 5px #ff00b3 inset; */
     box-sizing: content-box;
 }
 
-.theme1:hover {
-    background: rgb(38, 211, 38);
-    border: rgb(158, 245, 147) 2px solid;
+.whiteTheme:hover {
+    background: linear-gradient(90deg, rgb(192, 192, 192) 50%, rgba(255, 255, 255, 0.678) 50%);
+    border: rgb(161, 161, 161) 2px solid;
     cursor: pointer;
     box-shadow: 5px 5px 10px #151574;
 }
 
-.theme2 {
+.blueTheme {
     height: 30px;
     width: 30px;
     border-radius: 100%;
-    background: blue;
+    background: linear-gradient(90deg, #0d0d3f 50%, #2424a8 50%);;
     margin: 7px;
     border: black 2px solid;
     box-sizing: content-box;
 }
 
-.theme2:hover {
-    background: rgb(64, 77, 255);
+.blueTheme:hover {
+    background: linear-gradient(90deg, #33337c 50%, rgb(64, 77, 255) 50%);
     border: rgb(159, 159, 253) 2px solid;
     cursor: pointer;
     box-shadow: 5px 5px 10px #151574;

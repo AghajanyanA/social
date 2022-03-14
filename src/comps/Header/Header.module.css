@@ -1,6 +1,6 @@
 .header {
   grid-area: header;
-  background-color: #0d0d3f;
+  background-color: var(--navbarheader-background);
   display: flex;
   /* box-sizing:content-box; */
   }
@@ -21,7 +21,7 @@
 
 
 .header .welcomeMSG .userinfo {
-  color: White;
+  color: var(--text-header-userinfo);
   font-size: 16px;
   float: left;
   margin-right: 15px;

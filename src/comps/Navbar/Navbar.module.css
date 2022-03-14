@@ -1,11 +1,11 @@
 .navbar {
     grid-area: nav;
-    background-color: #0d0d3f;
+    background-color: var(--navbarheader-background);
     padding: 10px;
 }
 .navbar a {
     text-decoration: none;
-    color: whitesmoke;
+    color: var(--text-navbar);
     font-size: large;
 }
 
@@ -15,7 +15,7 @@
 
 .navbar a.activeLink {
     font-weight: bold;
-    background-color: rgb(51, 51, 255);
+    background-color: var(--navbar-active);
 }
 
 .navbar div {
@@ -24,7 +24,7 @@
 }
 
 .navbar > div:hover {
-    background-color: rgb(51, 51, 255, 0.5);
+    background-color: var(--navbar-hover);
     
 }
 
