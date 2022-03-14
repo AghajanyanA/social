@@ -14,29 +14,24 @@ code {
 
 
 
-[data-theme='green'] {
-  --background-color: #00ff00;
-  --text-primary: white;
-  --text-secondary: grey;
-  --accent: darkred;
-}
-[navheader-theme='green']s {
-  --background-color: #005f00;
-  --text-primary: black;
-  --text-secondary: grey;
-  --accent: darkred;
+[data-theme='white'] {
+  --background-color: rgb(161, 161, 161);
+  --navbarheader-background: rgb(100, 100, 100);
+  --text-navbar: black;
+  --text-header-userinfo: black;
+  --textarea-background: rgb(202, 202, 202);
+  --my-status-background: rgb(202, 202, 202);
+  --navbar-hover: rgb(126, 126, 126);
+  --navbar-active: rgb(126, 126, 126, 0.5);
 }
 
-[content-theme='blue'] {
+[data-theme='blue'] {
   --background-color: #2424a8;
-  --text-primary: white;
-  --text-secondary: grey;
-  --accent: darkred;
-}
-
-[navheader-theme='blue'] {
-  --background-color: #0d0d3f;
-  --text-primary: white;
-  --text-secondary: grey;
-  --accent: darkred;
+  --navbarheader-background: #0d0d3f;
+  --text-navbar: whitesmoke;
+  --text-header-userinfo: White;
+  --textarea-background: #6e6ea8;
+  --my-status-background: #6e6ea8;
+  --navbar-hover: rgb(51, 51, 255, 0.5);
+  --navbar-active: rgb(51, 51, 255);
 }
