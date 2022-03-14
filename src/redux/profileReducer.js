@@ -2,6 +2,7 @@ const new_status_post = 'NEW-STATUS-POST';
 const update_newpost_textarea = 'UPDATE-NEWPOST-TEXT'
 const clear_profile_textarea = 'CLEAR-PROFILE-TEXTAREA'
 const add_like_by_btn = 'ADD-LIKE-BY-BTN'
+const set_or_change_status = 'set_or_change_status'
 
 const init_state = {
     avatarURL: 'https://st2.depositphotos.com/1104517/11967/v/950/depositphotos_119675554-stock-illustration-male-avatar-profile-picture-vector.jpg',
@@ -10,9 +11,9 @@ const init_state = {
         { id: 2, name: 'Anthony', message: 'You look gr8', likesCount: 1, avatarURL: 'https://www.svgrepo.com/show/149771/avatar.svg' },
         { id: 3, name: 'Jessica', message: 'WHOS THAT BITCH BEHIND YOU', likesCount: 223, avatarURL: 'https://www.svgrepo.com/show/7225/avatar.svg' }
     ],
-    textareaControl: ''
+    textareaControl: '',
+    profileStatus: ''
 }
-
 
 const profileReducer = (state = init_state, action) => {
 
@@ -46,6 +47,10 @@ const profileReducer = (state = init_state, action) => {
                 ...state, 
                 textareaControl: ''
             }
+        case set_or_change_status:
+            return {
+                ...state, profileStatus: action.statusText
+            }
         default:
             return state
     }
@@ -62,6 +67,9 @@ export const resetProfileTextareaAction = () => {
 }
 export const likeBtnAction = (likesCount, id) => {
     return { type: add_like_by_btn, likesCount: likesCount, id: id }
+}
+export const statusChange = statusText => {
+    return { type: set_or_change_status, statusText}
 }
 
 

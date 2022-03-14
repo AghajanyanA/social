@@ -5,7 +5,10 @@ import Messages from './Messages';
 
 const mapStateToProps = (state) => {
     return {
-        state: state.messagePage
+        state: state.messagePage,
+        messageTextareaControl: state.messagePage.messageTextareaControl,
+        dialogData: state.messagePage.dialogData,
+        textMessageData: state.messagePage.textMessageData
 }
 }
 
@@ -17,7 +20,7 @@ const mapDispatchToProps = (dispatch) => {
         handleSendPM: () => {
             dispatch(sendPMActionCreator())
         },
-        handleElseSendPM: () => {
+        clearTextarea: () => {
             dispatch(clearTextareaActionCreator())
         }
     }

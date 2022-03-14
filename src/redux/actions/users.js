@@ -1,8 +1,6 @@
-import { ToggleLoaderAC, loadUsers, getTotalUsersAC, changePageAC } from "../usersReducer";
+import { ToggleLoaderAC, loadUsers, getTotalUsersAC, changePageAC, followIsPending, followAC } from "../usersReducer";
 import { usersAPI } from "../../api-calls/APIcalls";
-import { authAPI } from "../../api-calls/APIcalls";
-import { setAuthMe } from "../authMeReducer";
-import { getCurrentUserAvatar } from "../headerReducer";
+import { followAPI } from "../../api-calls/APIcalls";
 
 
 export const loadUsersThunk = (pageSize, currentPage) => (dispatch) => {
@@ -27,16 +25,29 @@ export const changePageThunk = (pageSize, pageNumber) => (dispatch) => {
     ).catch(err => console.log(err));
 }
 
-export const establishAuthMe = (dispatch) => {
+export const followBTNHandler = (userid) => dispatch => {
+    dispatch(followIsPending(true, userid))
+    followAPI.followUserApiCall(userid)
+        .then(
+            res => {
+                if (res.data.resultCode === 0) {
+                    dispatch(followAC(userid))
+                    dispatch(followIsPending(false, userid))
+                }
+            }
+        ).catch(err => console.log(err));
+}
+
+export const unfollowBTNHandler = userid => dispatch => {
     
-    authAPI.authMe()
-    .then(res => {
-        if (res.data.resultCode === 0) {
-            dispatch(setAuthMe(res.data))
-            authAPI.getUserPhoto(res.data.data.id)
-                .then(res => dispatch(getCurrentUserAvatar(res.photos?.small)))
-                .catch((err) => console.log(err))
-        }
-    })
-    .catch((err) => {console.log(err)})
+    dispatch(followIsPending(true, userid))
+    followAPI.unfollowUserApiCall(userid)
+        .then(
+            res => {
+                if (res.data.resultCode === 0) {
+                    dispatch(followAC(userid))
+                    dispatch(followIsPending(false, userid))
+                }
+            }
+        ).catch(err => console.log(err));
 }

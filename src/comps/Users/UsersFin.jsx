@@ -2,7 +2,6 @@ import React, { useState, useMemo } from "react";
 import c from './users.module.css'
 import { ImArrowLeft, ImArrowRight } from 'react-icons/im'
 import { useHistory } from "react-router-dom";
-import { followAPI } from "../../api-calls/APIcalls";
 
 
 const UsersFin = (props) => {
@@ -60,31 +59,9 @@ const UsersFin = (props) => {
     }
 
 
-    const unfollowClickHandler = userid => {
-        props.followIsPendingToggler(true, userid)
-        followAPI.unfollowUserApiCall(userid)
-        .then(
-            res => {
-                if (res.data.resultCode === 0) {
-                    props.followToggle(userid)
-                    props.followIsPendingToggler(false, userid)
-                }
-            }
-        ).catch(err => console.log(err));
-    }
-
-    const followClickHandler = userid => {
-        props.followIsPendingToggler(true, userid)
-        followAPI.followUserApiCall(userid).then(
-            res => {
-                if (res.data.resultCode === 0) {
-                    props.followToggle(userid)
-                    props.followIsPendingToggler(false, userid)
-                }
-            }
-        ).catch(err => console.log(err));
-    }
-
+    const unfollowClickHandler = userid => props.unfollow(userid)
+//fix api calls
+    const followClickHandler = userid => props.follow(userid)
 
 
 
@@ -144,10 +121,10 @@ const UsersFin = (props) => {
 
                         </div>
                         
-                        {users.followed ? // UNFOLLOW BUTTON
+                        {users.followed ?   //  UNFOLLOW    BUTTON
                             <button disabled={props.followPending.some(id => id === users.id)} className={c.unfollowBTN} onClick={() => unfollowClickHandler(users.id) }>Unfollow</button> :
 
-                                          // FOLLOW   BUTTON
+                                            //  FOLLOW      BUTTON
                             <button disabled={props.followPending.some(id => id === users.id)} className={c.followBTN} onClick={() => followClickHandler(users.id)} >Follow</button> }
 
                         <div className={c.usersstatus}>

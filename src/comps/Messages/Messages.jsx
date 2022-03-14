@@ -4,9 +4,11 @@ import TextMessage from './TextMessage/TextMessage'
 import Dialog from './Dialog/Dialog'
 import { Button } from 'antd';
 
-const Messages = ({state, handleOnChange, handleSendPM, handleElseSendPM}) => {
-    const dialogElements = state.dialogData.map(users => <Dialog key={users.id} state={users} />)
-    const textMessageElements = state.textMessageData.map(message => <TextMessage key={message.id} msg={message.msg} />)
+const Messages = ({messageTextareaControl, dialogData, textMessageData, handleOnChange, handleSendPM, clearTextarea}) => {
+
+    
+    const dialogElements = dialogData.map(users => <Dialog key={users.id} users={users} />)
+    const textMessageElements = textMessageData.map(message => <TextMessage key={message.id} msg={message.msg} />)
 
 
     const onChange = (e) => {
@@ -14,10 +16,17 @@ const Messages = ({state, handleOnChange, handleSendPM, handleElseSendPM}) => {
         handleOnChange(text)
     }
     const onSendPM = () => {
-        if(state.messageTextareaControl.trim() !== ''){
+        if(messageTextareaControl.trim() !== ''){
             handleSendPM()
-    } else {handleElseSendPM()}
+    } else {clearTextarea()}
 }
+    const handleSendByEnterKey = e => {
+        if ((e.key === 'Enter' && e.shiftKey) && (messageTextareaControl.trim() !== '')) {
+            handleSendPM()
+            clearTextarea()
+            e.preventDefault()
+        }
+    }
     
     return (
         <div className={c.wrapall}>
@@ -28,8 +37,9 @@ const Messages = ({state, handleOnChange, handleSendPM, handleElseSendPM}) => {
                 { textMessageElements }
                 <div className={c.textarea}>
                     <textarea className={c.textarea} 
-                    value={state.messageTextareaControl} 
-                    onChange={onChange} 
+                    value={messageTextareaControl} 
+                    onChange={onChange}
+                    onKeyPress={handleSendByEnterKey} 
                     cols="7000" rows="3" 
                     placeholder='Enter message' 
                     spellCheck='true'></textarea>

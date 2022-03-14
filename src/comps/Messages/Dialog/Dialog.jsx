@@ -2,11 +2,14 @@ import React from 'react'
 import c from './Dialog.module.css'
 import { NavLink } from 'react-router-dom'
 
-const Dialog = ({state}) => {
+const Dialog = ({ users }) => {
     return (
-        <div className={c.dialog + ' ' + c.active}>
-            <NavLink to={'/messages/' + state.id}><img src={state.avatarURL} alt='no img'/>{state.user}</NavLink>
-        </div>
+        <NavLink to={'/messages/' + users.id} className={c.dialog} activeClassName={c.active}>
+            <div className={c.dialog1}>
+                <img src={users.avatarURL} alt='no img' />
+                {users.user}
+            </div>
+        </NavLink>
     )
 }
 

@@ -2,7 +2,7 @@ import messagesReducer from "./messagesReducer"
 import profileReducer from "./profileReducer"
 
 
-let store = {
+const store = {
     _state: {
         profilePage: {
             avatarURL: 'https://st2.depositphotos.com/1104517/11967/v/950/depositphotos_119675554-stock-illustration-male-avatar-profile-picture-vector.jpg',
@@ -61,7 +61,7 @@ let store = {
 
 
     // _statusPostHandler(name, msg, likeC = 0, aurl) {
-    //     let new_post = {
+    //     const new_post = {
     //         id: this._state.profilePage.postData.length + 1,
     //         name: name,
     //         message: msg,

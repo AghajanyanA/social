@@ -29,11 +29,12 @@ function VisitProfileContainer({ loadUsers, ...props }) {
         <div>
             VISIT PROFILE COMPONENT
             <VisitProfile
-                status={props.status}
+                aboutMe={props.aboutMe}
                 name={props.name}
                 avatar={props.avatar}
                 jobSeek={props.jobSeek}
                 jobSeekDescr={props.jobSeekDescr}
+                status={props.status}
             />
             {/* <MyPostsContainer /> */}
         </div>
@@ -44,11 +45,12 @@ function VisitProfileContainer({ loadUsers, ...props }) {
 const mapStateToProps = (state) => {
     return {
         userId: state.visitProfilePage.data.userId,
-        status: state.visitProfilePage.data.aboutMe,
+        aboutMe: state.visitProfilePage.data.aboutMe,
         avatar: state.visitProfilePage.data.photos?.large,
         name: state.visitProfilePage.data.fullName,
         jobSeek: state.visitProfilePage.data.lookingForAJob,
         jobSeekDescr: state.visitProfilePage.data.lookingForAJobDescription,
+        status: state.visitProfilePage.status
     }
 }
 

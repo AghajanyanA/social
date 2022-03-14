@@ -64,7 +64,7 @@ export const loadUsers = users => { return{ type: load_users, users: users } }
 export const changePageAC = page => { return{ type: change_current_page, page: page } }
 export const getTotalUsersAC = uNumber => { return{ type: get_total_users_count, uNumber: uNumber } }
 export const ToggleLoaderAC = isLoading => { return { type: toggle_is_loading, isLoading }}
-export const folllowIsPending = (isPending, userid) => { return { type: follow_pending, isPending, userid } }
+export const followIsPending = (isPending, userid) => { return { type: follow_pending, isPending, userid } }
 
 
 export default usersReducer

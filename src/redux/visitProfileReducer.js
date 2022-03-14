@@ -1,7 +1,9 @@
 const set_data = 'set_data'
+const set_status = 'set_status'
 
 const init_state = { 
-    data: {}
+    data: {},
+    status: ''
 }
 
 const visitProfileReducer = (state = init_state, action) => {
@@ -10,7 +12,13 @@ const visitProfileReducer = (state = init_state, action) => {
         return {...state,
             data: action.data
            }
-
+        }
+        case set_status: {
+            return {
+                ...state, 
+                status: action.status
+            }
+        
        }
            
         default:
@@ -20,5 +28,6 @@ const visitProfileReducer = (state = init_state, action) => {
 
 
 export const setData = data => {return {type: set_data, data}}
+export const setStatus = status => {return {type : set_status, status}}
 
 export default visitProfileReducer

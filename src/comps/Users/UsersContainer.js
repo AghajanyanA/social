@@ -1,11 +1,11 @@
 import { connect } from "react-redux";
-import { followAC, folllowIsPending } from "../../redux/usersReducer";
 import UsersFin from "./UsersFin";
 import React from "react";
 import Preloader from "../assets/loading-gif/Preloader"
 import c from './users.module.css'
-import { loadUsersThunk, changePageThunk } from "../../redux/actions/users";
-
+import { loadUsersThunk, changePageThunk, followBTNHandler, unfollowBTNHandler } from "../../redux/actions/users";
+import RedirectHOC from '../HOC/redirect'
+import { compose } from "redux";
 
 class Users extends React.Component {
     componentDidMount() {
@@ -16,8 +16,6 @@ class Users extends React.Component {
         this.props.changeThePage(this.props.pageSize, pageNumber)
     }
 
-
-
     render() {
         return <>
             { this.props.isLoading && <div className={c.preloader}> <Preloader /> </div> }
@@ -27,9 +25,9 @@ class Users extends React.Component {
                 currentPage={this.props.currentPage}
                 handlePageChange={this.handlePageChange}
                 users={this.props.users}
-                followToggle={this.props.followToggle}
                 followPending={this.props.followPending}
-                followIsPendingToggler={this.props.followIsPendingToggler}
+                follow={this.props.follow}
+                unfollow={this.props.unfollow}
             />    
         </>
     }
@@ -47,23 +45,25 @@ const mapStateToProps = state => {
     }
 }
 
-
 const mapDispatchToProps = dispatch => {
     return {
-        followToggle: id => {
-            dispatch(followAC(id))
-        },
-        followIsPendingToggler: (isPending, userID) => {
-            dispatch(folllowIsPending(isPending, userID))
-        },
         loadUsers: (pageSize, currentPage) => {
             dispatch(loadUsersThunk(pageSize, currentPage))
         },
         changeThePage: (pageSize, pageNumber) => {
             dispatch(changePageThunk(pageSize, pageNumber))
-        }
+        },
+        follow: userid => dispatch(followBTNHandler(userid)),
+        unfollow: userid => dispatch(unfollowBTNHandler(userid))
     }
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Users)
+
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    RedirectHOC
+)(Users)
+
+//create login page that checks if auth - true/false. if true, then return to the where redirecred from, if false, show login page
+//try: move connect(connect reacts to the changes that is present in mstp) from app.js to settings component

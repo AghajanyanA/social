@@ -24,7 +24,7 @@
 }
 
 
-.status {
+.aboutMe {
     margin: 50px 0 0 30px;
     box-sizing: content-box;
     max-width: 50%;
@@ -33,9 +33,12 @@
     word-break: break-word;
     background-color: rgb(51, 110, 43);
 }
-.status > p {
+.aboutMe > p {
     padding: 4px;
     width: 25.5vw;
     background-color: rgba(255, 0, 0, 0.999);
     font-size: 12px;
+}
+.status {
+    font-size: 14px;
 }
