@@ -1479,16 +1479,6 @@
     "@types/yargs" "^16.0.0"
     "chalk" "^4.0.0"
 
-"@lemoncode/fonk-final-form@^2.3.4":
-  "integrity" "sha512-oGtsTaI45NvvNZP/4XcyeFbb9U2JLuKZhIpqr0zhRf+0nsb7DjR2LYQ5L+gMHgzhjqWfPoG5TFbQ/ShgDjNnbA=="
-  "resolved" "https://registry.npmjs.org/@lemoncode/fonk-final-form/-/fonk-final-form-2.3.4.tgz"
-  "version" "2.3.4"
-
-"@lemoncode/fonk@^1.5.1", "@lemoncode/fonk@latest":
-  "integrity" "sha512-qBSpFOt2VarJXnuxzVsQ5aheA+8zqW6P2HzTrC4GUI2HP2nfxwz3384NKf3cnDWitSn2ODCo3OmWDiuGFTd/+w=="
-  "resolved" "https://registry.npmjs.org/@lemoncode/fonk/-/fonk-1.5.1.tgz"
-  "version" "1.5.1"
-
 "@nodelib/fs.scandir@2.1.4":
   "integrity" "sha512-33g3pMJk3bg5nXbL/+CY6I2eJDzZAni49PfJnL5fghPTggPvBd/pFNSgJsdAgWptuFu7qq/ERvOYFlhvsLTCKA=="
   "resolved" "https://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.4.tgz"
