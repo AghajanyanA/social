@@ -10,7 +10,7 @@
 }
 
 
-.header .welcomeMSG {
+.welcomeMSG {
   margin-top: 1vh;
   margin-bottom: 1vh;
   margin-right: 0.5vw;
@@ -20,7 +20,7 @@
 }
 
 
-.header .welcomeMSG .userinfo {
+.userinfo {
   color: var(--text-header-userinfo);
   font-size: 16px;
   float: left;
@@ -28,12 +28,12 @@
   margin-top: 0.6vh;
 }
 
-.header .welcomeMSG .userinfo img {
+ .userinfo img {
   max-width: 60px;
   border-radius: 50%;
   margin-right: -1vw;
 }
-.header .welcomeMSG .logoutBtn {
+.logoutBtn {
   margin-top: 6.5%;
   margin-right: 1vw;
   background: #2424a8;
@@ -42,7 +42,7 @@
   -webkit-box-sizing: border-box;
 }
 
-.header .welcomeMSG .logoutBtn:focus {
+.logoutBtn:focus {
   margin-top: 6.5%;
   margin-right: 1vw;
   background: #2424a8;
@@ -51,10 +51,30 @@
   -webkit-box-sizing: border-box;
 }
 
-.header .welcomeMSG .logoutBtn:hover {
+.logoutBtn:hover {
   box-sizing: border-box;
   background: #0d0d3f;
   border: 1px solid #2424a8;
   box-shadow:inset 0px 0px 1px 1px #2424a8;
   /* border-color: #2424a8; */
+}
+
+.loginButton {
+  margin-top: 3vh;
+  margin-bottom: 1vh;
+  margin-right: 4vw;
+  resize: none;
+  position: absolute;
+  right: 0;
+  background: #2424a8 !important;
+  border-color: #0d0d3f !important;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+.loginButton:hover {
+  box-sizing: border-box;
+  background: #0d0d3f !important;
+  border: 1px solid #2424a8 !important;
+  box-shadow:inset 0px 0px 1px 1px #2424a8 !important;
 }

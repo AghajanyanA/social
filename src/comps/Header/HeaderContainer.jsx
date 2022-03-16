@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import Header from "./Header";
-import { establishAuthMe } from "../../redux/actions/users";
+import { establishAuthMe, logoutProcessCall } from "../../redux/actions/authMe";
 
 function HeaderContainer(props) {
 
@@ -26,6 +26,9 @@ const mapDispatchToProps = dispatch => {
     return {
         getAuthMeData: () => {
             dispatch(establishAuthMe)
+        },
+        logoutProcess: () => {
+            dispatch(logoutProcessCall)
         }
     }
 }
